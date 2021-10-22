@@ -12,3 +12,8 @@ compare([[1]], [[3]]); //False
 compare([{a: 1}], [{a: 1}]); //True
 compare({a: 1, b: 2}, {b: 2, a: 1}); //False
 ```
+
+Test Results in Chrome 95.0.4638.54 64-bit:
+<img src="https://i.imgur.com/WvxSS7t.png">
+
+**You can also test by yourself executing the "test.html" file in the repository using Live Server or similar.**
