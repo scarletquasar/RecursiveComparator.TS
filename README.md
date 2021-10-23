@@ -19,6 +19,10 @@ Test Results in Chrome 95.0.4638.54 64-bit:
 
 **You can also test by yourself executing the "test.html" file in the repository using Live Server or similar or in https://eternalquasar0206.github.io/recursive-comparator/**
 
+TODO:
+
+- [ ] Add comparison options: "Differentiate object instances" and "Use non-strict comparison"
+
 Changelog:
 
 - **1.1.1**
