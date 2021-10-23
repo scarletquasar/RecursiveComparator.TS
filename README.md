@@ -4,7 +4,7 @@ comparison with nested items and performs the operations in a comparative way - 
 it automatically returns "false" instead of continuing to compare. The order of elements is taken into account 
 in any operation.
 
-To get the script just clone that repository and import "compare" from "recursiveComparator.js" and use like the example:
+To get the script just clone that repository (or get the version in "Releases" section) and import "compare" from "recursiveComparator.js" and use like the example:
 
 ```js
 compare([], []); //True
