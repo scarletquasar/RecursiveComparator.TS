@@ -1,5 +1,5 @@
 /*
-    recursiveComparator v1.1.0 - 10/2021
+    recursiveComparator v1.1.1 - 10/2021
     (C) 2021 Kayky Vitor Cruz
     Variable comparison algorithm created to serve as an alternative to the "JSON.stringify" and "Array.every" 
     methods, having higher operating speed and more reliable results. This code is licensed under Public Domain (CC0).
@@ -48,6 +48,10 @@ export function compare(value1, value2) {
                         }
                     }
                 }
+            }
+            /* JavaScript Date() constructor operation */
+            else if(value1 instanceof Date && value2 instanceof Date) {
+                return value1.toString() === value2.toString();
             }
             /* JavaScript Default Array operation */
             else if(Array.isArray(value1) && Array.isArray(value2)) {

@@ -19,8 +19,12 @@ Test Results in Chrome 95.0.4638.54 64-bit:
 
 **You can also test by yourself executing the "test.html" file in the repository using Live Server or similar.**
 
-Last version (1.1.0) changelog:
+Changelog:
 
+- 1.1.1
+- Add explicit "Date" prototype comparator in instanceof based operations
+
+- 1.1.0
 - Add comparison possibilities to JavaScript "Set" and "Map" constructor based objects
 - Add comparison possibilities to "function" JavaScript primitive type (with limitations - check the code commented note)
 - Fix "object" comparation when objects with different values and equal keys were returning true in the comparison
