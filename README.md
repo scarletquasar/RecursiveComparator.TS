@@ -25,6 +25,9 @@ TODO:
 
 Changelog:
 
+- **1.1.3**
+- Hotfix - Fix Map() operation comparation
+
 - **1.1.2**
 - Hotfix: Correctly compare the "size" of Map() objects
 
