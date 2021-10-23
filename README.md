@@ -29,3 +29,6 @@ Changelog:
 - Add comparison possibilities to "function" JavaScript primitive type (with limitations - check the code commented note)
 - Fix "object" comparation when objects with different values and equal keys were returning true in the comparison
 
+- **1.0.0**
+- Initial release
+
