@@ -1,5 +1,5 @@
 /*
-    recursiveComparator v1.1.1 - 10/2021
+    recursiveComparator v1.1.2 - 10/2021
     (C) 2021 Kayky Vitor Cruz
     Variable comparison algorithm created to serve as an alternative to the "JSON.stringify" and "Array.every" 
     methods, having higher operating speed and more reliable results. This code is licensed under Public Domain (CC0).
@@ -14,8 +14,8 @@ export function compare(value1, value2) {
             if(value1 instanceof Map && value2 instanceof Map) {
                 const obj1 = Object.keys(value1);
                 const obj2 = Object.keys(value2);
-                const len1 = obj1.length;
-                const len2 = obj2.length;
+                const len1 = obj1.size;
+                const len2 = obj2.size;
                 /* 
                     Note:
                     Same process as compare for default dictionary object, but the process
