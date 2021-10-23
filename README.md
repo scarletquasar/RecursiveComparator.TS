@@ -25,6 +25,9 @@ TODO:
 
 Changelog:
 
+- **1.1.2**
+- Hotfix: Correctly compare the "size" of Map() objects
+
 - **1.1.1**
 - Add explicit "Date" prototype comparator in instanceof based operations
 
