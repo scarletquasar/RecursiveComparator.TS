@@ -10,6 +10,7 @@ To get the script just clone that repository (or get the version in "Releases" s
 compare([], []); //True
 compare([[1]], [[3]]); //False
 compare([{a: 1}], [{a: 1}]); //True
+compare([{a: 3}], [{a: 1}]); //False
 compare({a: 1, b: 2}, {b: 2, a: 1}); //False
 ```
 
