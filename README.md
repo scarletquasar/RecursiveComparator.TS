@@ -27,6 +27,11 @@ TODO:
 
 Changelog:
 
+- **1.1.5**
+- Update type checker to constructor checker providing more reliable results
+- Boolean comparison from constructor will not be strict due to 100% of false-negatives in that case
+- Currently can compare objects of the constructors: Default object, Array, Map, Set, Boolean, String and Function
+
 - **1.1.4**
 - Hotfix - Fix recursive call of Map() operation
 - Fix false positive when comparing {} with new Map() object
