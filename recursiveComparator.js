@@ -1,22 +1,17 @@
 /*
-    recursiveComparator v1.1.4 - 10/2021
+    recursiveComparator v1.1.5 - 10/2021
     (C) 2021 Kayky Vitor Cruz
     Variable comparison algorithm created to serve as an alternative to the "JSON.stringify" and "Array.every" 
     methods, having higher operating speed and more reliable results. This code is licensed under Public Domain (CC0).
 */
 
 export function compare(value1, value2) {
-    function _isContextRawObject(val) {
-        return !Boolean(
-            val instanceof Map || val instanceof Set
-        )
-    }
     if(typeof value1 !== typeof value2) return false;
     let errlvl = 0;
     switch(typeof value1) {
         case "object":
             /* JavaScript Map() constructor operation */
-            if(value1 instanceof Map && value2 instanceof Map) {
+            if(value1.constructor.name === "Map" && value2.constructor.name === "Map") {
                 const len1 = value1.size;
                 const len2 = value2.size;
 
@@ -29,7 +24,7 @@ export function compare(value1, value2) {
                 });
             }
             /* JavaScript Set() constructor operation */
-            else if(value1 instanceof Set && value2 instanceof Set) {
+            else if(value1.constructor.name === "Set" && value2.constructor.name === "Set") {
                 const len1 = value1.size;
                 const len2 = value2.size;
 
@@ -44,11 +39,11 @@ export function compare(value1, value2) {
                 }
             }
             /* JavaScript Date() constructor operation */
-            else if(value1 instanceof Date && value2 instanceof Date) {
+            else if(value1.constructor.name === "Date" && value2.constructor.name === "Date") {
                 return value1.toString() === value2.toString();
             }
             /* JavaScript Default Array operation */
-            else if(Array.isArray(value1) && Array.isArray(value2)) {
+            else if(value1.constructor.name === "Array" && value2.constructor.name === "Array") {
                 const len1 = value1.length;
                 const len2 = value2.length;
 
@@ -61,8 +56,7 @@ export function compare(value1, value2) {
                 }
             }
             /* JavaScript Default Object operation */
-            else if(!Array.isArray(value1) && !Array.isArray(value2) 
-            && _isContextRawObject(value1) && _isContextRawObject(value2)) {
+            else if(value1.constructor.name === "Object" && value2.constructor.name === "Object") {
                 const obj1 = Object.keys(value1);
                 const obj2 = Object.keys(value2);
                 const len1 = obj1.length;
@@ -80,6 +74,22 @@ export function compare(value1, value2) {
                         errlvl++;
                     }
                 }
+            }
+            /* JavaScript Default String Object operation - With constructor */
+            else if(value1.constructor.name === "String" && value2.constructor.name === "String") {
+                return value1.toString() === value2.toString();
+            }
+            /* JavaScript Default Function Object operation - With constructor */
+            else if(value1.constructor.name === "Function" && value2.constructor.name === "Function") {
+                return value1.toString() === value2.toString();
+            }
+            /* 
+                JavaScript Default Boolean Object operation - With constructor 
+                Note: Boolean constructor comparation will not be strict by default due to
+                a large quantity of false-negatives.
+            */
+            else if(value1.constructor.name === "Boolean" && value2.constructor.name === "Boolean") {
+                return value1.toString() == value2.toString();
             }
             else {
                 return false;
