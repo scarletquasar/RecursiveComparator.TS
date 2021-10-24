@@ -25,6 +25,9 @@ TODO:
 
 Changelog:
 
+- **1.1.4**
+- Hotfix - Fix recursive call of Map() operation
+
 - **1.1.3**
 - Hotfix - Fix Map() operation comparation
 
@@ -38,7 +41,4 @@ Changelog:
 - Add comparison possibilities to JavaScript "Set" and "Map" constructor based objects
 - Add comparison possibilities to "function" JavaScript primitive type (with limitations - check the code commented note)
 - Fix "object" comparation when objects with different values and equal keys were returning true in the comparison
-
-- **1.0.0**
-- Initial release
 
