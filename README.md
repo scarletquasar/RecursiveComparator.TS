@@ -27,6 +27,7 @@ Changelog:
 
 - **1.1.4**
 - Hotfix - Fix recursive call of Map() operation
+- Fix false positive when comparing {} with new Map() object
 
 - **1.1.3**
 - Hotfix - Fix Map() operation comparation
