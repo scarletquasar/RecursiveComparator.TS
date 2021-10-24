@@ -27,6 +27,9 @@ TODO:
 
 Changelog:
 
+- **1.1.6**
+- Remove "errorlvl" to improve 90%+ performance in case of false comparison
+
 - **1.1.5**
 - Update type checker to constructor checker providing more reliable results
 - Boolean comparison from constructor will not be strict due to 100% of false-negatives in that case
