@@ -14,6 +14,7 @@ compare([{a: 3}], [{a: 1}]); //False
 compare({a: 1, b: 2}, {b: 2, a: 1}); //False
 compare({}, new Map()); //False
 compare({a: 1}, new Map([["a", 1]])); //False
+compare([{a: new Set()}], [{a: new Set()}]); //True
 ```
 
 Test Results in Chrome 95.0.4638.54 64-bit:
