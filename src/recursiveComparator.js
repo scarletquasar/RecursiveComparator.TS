@@ -1,11 +1,12 @@
 /*
-    recursiveComparator v1.1.7 - 11/2021
+    recursiveComparator v1.2.0 - 11/2021
     (C) 2021 Kayky Vitor Cruz
     Variable comparison algorithm created to serve as an alternative to the "JSON.stringify" and "Array.every" 
     methods, having higher operating speed and more reliable results. This code is licensed under MIT License.
 */
 
-export function compare(value1, value2) {
+export function compare(value1, value2, cmpFn = (a, b) => a === b) {
+
     if(typeof value1 !== typeof value2) return false;
     switch(typeof value1) {
         case "object":
@@ -39,7 +40,7 @@ export function compare(value1, value2) {
             }
             /* JavaScript Date() constructor operation */
             else if(value1.constructor.name === "Date" && value2.constructor.name === "Date") {
-                return value1.toString() === value2.toString();
+                return cmpFn(value1.toString(), value2.toString());
             }
             /* JavaScript Default Array operation */
             else if(value1.constructor.name === "Array" && value2.constructor.name === "Array") {
@@ -76,11 +77,11 @@ export function compare(value1, value2) {
             }
             /* JavaScript Default String Object operation - With constructor */
             else if(value1.constructor.name === "String" && value2.constructor.name === "String") {
-                return value1.toString() === value2.toString();
+                return cmpFn(value1, value2);
             }
             /* JavaScript Default Function Object operation - With constructor */
             else if(value1.constructor.name === "Function" && value2.constructor.name === "Function") {
-                return value1.toString() === value2.toString();
+                return cmpFn(value1.toString(), value2.toString());
             }
             /* 
                 JavaScript Default Boolean Object operation - With constructor 
@@ -88,7 +89,7 @@ export function compare(value1, value2) {
                 a large quantity of false-negatives.
             */
             else if(value1.constructor.name === "Boolean" && value2.constructor.name === "Boolean") {
-                return value1.toString() == value2.toString();
+                return cmpFn(value1.toString(), value2.toString());
             }
             else {
                 return false;
@@ -105,16 +106,15 @@ export function compare(value1, value2) {
                 const len1 = value1.toString().length;
                 const len2 = value2.toString().length;
                 if(typeof value1 === typeof value2 && len1 === len2) {
-                    return value1() === value2();
+                    return cmpFn(value1(), value2());
                 }
                 else {
                     return false;
                 }
 
             default:
-                return value1 === value2
-                
+                return cmpFn(value1, value2);
     }
 
-    return true
+    return true;
 }
