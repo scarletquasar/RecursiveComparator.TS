@@ -25,8 +25,6 @@ compare({}, new Map()); //False
 compare([[1]], [[3]]); //False
 ```
 
-**You can also test by yourself executing the "test.html" file in the repository using Live Server or similar or in https://eternalquasar0206.github.io/recursive-comparator/**
-
 # Information
 <a href="./info/Changelog.md">Changelog</a> - <a href="./info/TestResults.md">Test Results</a>
 
