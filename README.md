@@ -2,7 +2,8 @@
 Fast optimized algorithm to compare two variables of any type in JavaScript. The algorithm supports recursive 
 comparison with nested items and performs the operations in a comparative way - so that in case of differences 
 it automatically returns "false" instead of continuing to compare. The order of elements is taken into account 
-in any operation.
+in any operation. The function also supports comparison functions that will dictate the behavior the comparator 
+will use to check the data.
 
 ## Versions
 
@@ -11,7 +12,7 @@ in any operation.
 | development | main |
 | 1.1.6 | v1.1.6 |
 
-# Installation
+# Installation/Usage
 To get the script just clone that repository (or get the version in "Releases" section) and import "compare" from "recursiveComparator.js" and use like the example:
 
 ```js
