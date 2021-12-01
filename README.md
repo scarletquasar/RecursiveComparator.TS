@@ -13,19 +13,29 @@ will use to check the data.
 | 1.1.6 | v1.1.6 |
 
 # Installation/Usage
-To get the script just clone that repository (or get the version in "Releases" section) and import "compare" from "recursiveComparator.js" and use like the example:
+To get the script just clone that repository (or get the version in "Releases" section) and import "compare" from "recursiveComparator.js" and use like the examples:
+
+Without conditional function parameter:
+
+<details>
 
 ```js
-compare([{a: new Set()}], [{a: new Set()}]); //True
-compare([{a: 1}], [{a: 1}]); //True
-compare([], []); //True
-compare({a: 1}, new Map([["a", 1]])); //False
-compare({a: 1, b: 2}, {b: 2, a: 1}); //False
-compare([{a: 3}], [{a: 1}]); //False
-compare({}, new Map()); //False
-compare([[1]], [[3]]); //False
+compare([{a: 1}], [{a: 1}]); //(May be equal) True
+compare([[1]], [[3]]); //(May be equal) False
 ```
 
+</details>
+
+With conditional function parameter:
+
+<details>
+
+```js
+compare([{a: 1}], [{a: 1}], (a, b) => !compare(a, b)); //(May pass in the function parameters) False
+compare([{a: 1}], [{a: 1}], (a, b) => compare(a, b)); //(May pass in the function parameters) True
+```
+
+</details>
 # Information
 <a href="./info/Changelog.md">Changelog</a> - <a href="./info/TestResults.md">Test Results</a>
 
