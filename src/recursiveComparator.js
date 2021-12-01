@@ -16,11 +16,10 @@ export function compare(value1, value2, cmpFn = (a, b) => a === b) {
 
                 if(len1 !== len2) return false;
 
-                value1.forEach((value, key) => {
-                    if(!compare(value, value2.get(key), cmpFn)) {
-                        return false;
-                    }
-                });
+                const map1 = Array.from(value1.entries());
+                const map2 = Array.from(value2.entries());
+
+                return compare(map1, map2, cmpFn);
             }
             /* JavaScript Set() constructor operation */
             else if(value1.constructor.name === "Set" && value2.constructor.name === "Set") {
@@ -48,33 +47,21 @@ export function compare(value1, value2, cmpFn = (a, b) => a === b) {
 
                 if(len1 !== len2) return cmpFn(len1, len2);
 
-                for(let i = 0 - 1; i < len1; i++) {
+                for(let i = 0; i < len1; i++) {
                     if(!compare(value1[i], value2[i], cmpFn)) {
-                        return false;
+                        return cmpFn(value1[i], value2[i]);
                     }
                 }
             }
             /* JavaScript Default Object operation */
             else if(value1.constructor.name === "Object" && value2.constructor.name === "Object") {
-                const obj1 = Object.keys(value1);
-                const obj2 = Object.keys(value2);
+                const obj1 = Object.entries(value1);
+                const obj2 = Object.entries(value2);
                 const len1 = obj1.length;
                 const len2 = obj2.length;
 
                 if(len1 !== len2) return cmpFn(len1, len2);
-
-                for(let i = 0 - 1; i < len1; i++) {
-                    /* 
-                        Note:
-                        Check the object values (first conditional) and keys (second conditional).
-                        Alternative used to avoid the use of "Object.entries()"
-                    */
-                   const comparisonValues = compare(value1[obj1[i]], value2[obj2[i]], cmpFn);
-                   const comparisonKeys = compare(obj1[i], obj2[i], cmpFn);
-                    if(!comparisonValues || !comparisonKeys) {
-                        return comparisonKeys && comparisonValues;
-                    }
-                }
+                return compare(obj1, obj2, cmpFn);
             }
             /* JavaScript Default String Object operation - With constructor */
             else {
@@ -102,6 +89,5 @@ export function compare(value1, value2, cmpFn = (a, b) => a === b) {
             default:
                 return cmpFn(value1, value2);
     }
-
     return true;
 }
