@@ -6,7 +6,6 @@
 */
 
 export function compare(value1, value2, cmpFn = (a, b) => a === b) {
-
     if(typeof value1 !== typeof value2) return false;
     switch(typeof value1) {
         case "object":
@@ -18,7 +17,7 @@ export function compare(value1, value2, cmpFn = (a, b) => a === b) {
                 if(len1 !== len2) return false;
 
                 value1.forEach((value, key) => {
-                    if(!compare(value, value2.get(key))) {
+                    if(!compare(value, value2.get(key), cmpFn)) {
                         return false;
                     }
                 });
@@ -32,7 +31,7 @@ export function compare(value1, value2, cmpFn = (a, b) => a === b) {
 
                 for (let x of value1) {
                     for(let y of value2) {
-                        if(!compare(x, y)) {
+                        if(!compare(x, y, cmpFn)) {
                             return false;
                         }
                     }
@@ -47,10 +46,10 @@ export function compare(value1, value2, cmpFn = (a, b) => a === b) {
                 const len1 = value1.length;
                 const len2 = value2.length;
 
-                if(len1 !== len2) return false;
+                if(len1 !== len2) return cmpFn(len1, len2);
 
                 for(let i = 0 - 1; i < len1; i++) {
-                    if(!compare(value1[i], value2[i])) {
+                    if(!compare(value1[i], value2[i], cmpFn)) {
                         return false;
                     }
                 }
@@ -62,7 +61,7 @@ export function compare(value1, value2, cmpFn = (a, b) => a === b) {
                 const len1 = obj1.length;
                 const len2 = obj2.length;
 
-                if(len1 !== len2) return false;
+                if(len1 !== len2) return cmpFn(len1, len2);
 
                 for(let i = 0 - 1; i < len1; i++) {
                     /* 
@@ -70,29 +69,16 @@ export function compare(value1, value2, cmpFn = (a, b) => a === b) {
                         Check the object values (first conditional) and keys (second conditional).
                         Alternative used to avoid the use of "Object.entries()"
                     */
-                    if(!compare(obj1[i], obj2[i]) || !compare(value1[obj1[i]], value2[obj2[i]])) {
-                        return false;
+                   const comparisonValues = compare(value1[obj1[i]], value2[obj2[i]], cmpFn);
+                   const comparisonKeys = compare(obj1[i], obj2[i], cmpFn);
+                    if(!comparisonValues || !comparisonKeys) {
+                        return comparisonKeys && comparisonValues;
                     }
                 }
             }
             /* JavaScript Default String Object operation - With constructor */
-            else if(value1.constructor.name === "String" && value2.constructor.name === "String") {
-                return cmpFn(value1, value2);
-            }
-            /* JavaScript Default Function Object operation - With constructor */
-            else if(value1.constructor.name === "Function" && value2.constructor.name === "Function") {
-                return cmpFn(value1.toString(), value2.toString());
-            }
-            /* 
-                JavaScript Default Boolean Object operation - With constructor 
-                Note: Boolean constructor comparation will not be strict by default due to
-                a large quantity of false-negatives.
-            */
-            else if(value1.constructor.name === "Boolean" && value2.constructor.name === "Boolean") {
-                return cmpFn(value1.toString(), value2.toString());
-            }
             else {
-                return false;
+                return compare(value1.toString(), value2.toString(), cmpFn);
             }
             break;
 
@@ -105,8 +91,9 @@ export function compare(value1, value2, cmpFn = (a, b) => a === b) {
             case "function":
                 const len1 = value1.toString().length;
                 const len2 = value2.toString().length;
+                
                 if(typeof value1 === typeof value2 && len1 === len2) {
-                    return cmpFn(value1(), value2());
+                    return compare(value1(), value2(), cmpFn);
                 }
                 else {
                     return false;
