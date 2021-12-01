@@ -36,6 +36,7 @@ compare([{a: 1}], [{a: 1}], (a, b) => compare(a, b)); //(May pass in the functio
 ```
 
 </details>
+
 # Information
 <a href="./info/Changelog.md">Changelog</a> - <a href="./info/TestResults.md">Test Results</a>
 
