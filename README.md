@@ -27,7 +27,7 @@ Manually:
 To get the script just clone that repository (or get the version in "Releases" section) and import "compare" from "recursiveComparator.js"
 ```
 
-Without conditional function parameter:
+Usage without conditional function parameter:
 
 <details>
 
