@@ -6,7 +6,7 @@
 */
 
 export function compare(value1, value2, cmpFn = (a, b) => a === b) {
-    if(typeof value1 !== typeof value2) return false;
+    if(typeof value1 !== typeof value2) return cmpFn(value1, value2);
     switch(typeof value1) {
         case "object":
             /* JavaScript Map() constructor operation */
