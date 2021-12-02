@@ -14,7 +14,18 @@ will use to check the data.
 | 1.1.6 | v1.1.6 |
 
 # Installation/Usage
-To get the script just clone that repository (or get the version in "Releases" section) and import "compare" from "recursiveComparator.js" and use like the examples:
+
+Via NPM:
+
+```
+npm install recursive-comparator-js
+```
+
+Manually:
+
+```
+To get the script just clone that repository (or get the version in "Releases" section) and import "compare" from "recursiveComparator.js"
+```
 
 Without conditional function parameter:
 
