@@ -1,4 +1,6 @@
 Changelog:
+- **1.2.0**
+- Fixed behavior issues and introducted control function parameters
 
 - **1.1.6**
 - Remove "errorlvl" to improve 90%+ performance in case of false comparison
