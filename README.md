@@ -10,6 +10,7 @@ will use to check the data.
 | Version | Branch |
 | ------- | ------ |
 | development | main |
+| 1.2.1 Hotfix | v1.2.1 |
 | 1.2.0 | v1.2.0 |
 | 1.1.6 | v1.1.6 |
 
