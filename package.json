@@ -1,5 +1,5 @@
 {
-  "name": "recursive-comparator",
+  "name": "recursive-comparator-js",
   "version": "1.2.0",
   "description": "Compare variables of any type with customizable parameters",
   "main": "./src/recursiveComparator.js",
