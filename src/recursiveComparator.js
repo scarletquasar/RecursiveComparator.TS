@@ -1,10 +1,3 @@
-/*
-    recursiveComparator v1.2.0 - 12/2021
-    (C) 2021 Kayky Vitor Cruz
-    Variable comparison algorithm created to serve as an alternative to the "JSON.stringify" and "Array.every" 
-    methods, having higher operating speed and more reliable results. This code is licensed under MIT License.
-*/
-
 export function compare(value1, value2, cmpFn = (a, b) => a === b) {
     if(typeof value1 !== typeof value2) return cmpFn(value1, value2);
     switch(typeof value1) {
