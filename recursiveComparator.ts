@@ -10,7 +10,7 @@ export function compare(value1: unknown, value2: unknown, cmpFn: (a: unknown, b:
     switch(firstConstructor) {
         case "Map":
             const map1: Map<any, any> = value1 as Map<any, any>;
-            const map2: Map<any, any> = value1 as Map<any, any>;
+            const map2: Map<any, any> = value2 as Map<any, any>;
 
             len1 = map1.size;
             len2 = map2.size;
@@ -24,21 +24,17 @@ export function compare(value1: unknown, value2: unknown, cmpFn: (a: unknown, b:
 
         case "Set":
             const set1: Set<any> = value1 as Set<any>;
-            const set2: Set<any> = value1 as Set<any>;
+            const set2: Set<any> = value2 as Set<any>;
 
             len1 = set1.size;
             len2 = set2.size;
 
             if(len1 !== len2) return false;
 
-            for (let x of set1) {
-                for(let y of set2) {
-                    if(!compare(x, y, cmpFn)) {
-                        return false;
-                    }
-                }
-            }
-            break;
+            const setArray1: Array<any> = Array.from(set1);
+            const setArray2: Array<any> = Array.from(set2);
+
+            return compare(setArray1, setArray2);
         
         case "Array":
             const array1: Array<any> = value1 as Array<any>;
