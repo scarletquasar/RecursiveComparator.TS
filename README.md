@@ -7,7 +7,7 @@ and the code converted to vanilla JavaScript.
 
 - Clone this repository or copy the "recursiveComparator.ts" file content
 - Optional: convert the code to JavaScript using a transpilation tool like [Babel](https://babeljs.io/docs/en/)
-- Use it in your application
+- Use it in your application by importing "compare" from "path/to/file"
 
 ## Usage:
 
