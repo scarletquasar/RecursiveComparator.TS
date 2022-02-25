@@ -1,5 +1,7 @@
 # RecursiveComparator.ts
 
+<small>v2.0.0</small>
+
 Simplified algorithm to compare two variables of any type. This repository can be cloned
 and the code converted to vanilla JavaScript. 
 
