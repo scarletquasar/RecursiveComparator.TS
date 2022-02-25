@@ -1,4 +1,4 @@
-# RecursiveComparator.ts
+# RecursiveComparator.TS
 
 <small>v2.0.0</small>
 
