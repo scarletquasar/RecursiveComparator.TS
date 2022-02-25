@@ -18,8 +18,8 @@ export function compare(value1: unknown, value2: unknown, cmpFn: (a: unknown, b:
 
             if(len1 !== len2) return false;
 
-            const arrayMap1 = Array.from((value1 as Map<any, any>).entries());
-            const arrayMap2 = Array.from((value2 as Map<any, any>).entries());
+            const arrayMap1 = Array.from(map1.entries());
+            const arrayMap2 = Array.from(map1.entries());
 
             return compare(arrayMap1, arrayMap2, cmpFn);
 
