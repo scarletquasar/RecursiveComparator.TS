@@ -76,5 +76,3 @@ export function compare(value1: unknown, value2: unknown, cmpFn: (a: unknown, b:
 
     return true;
 }
-
-console.log(compare({1: 1}, {1: 1}));
