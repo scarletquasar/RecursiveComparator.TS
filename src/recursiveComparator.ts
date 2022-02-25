@@ -1,4 +1,4 @@
-function compare(value1: unknown, value2: unknown, cmpFn: (a: unknown, b: unknown) => boolean = (a: unknown, b: unknown) => a === b): boolean {
+export function compare(value1: unknown, value2: unknown, cmpFn: (a: unknown, b: unknown) => boolean = (a: unknown, b: unknown) => a === b): boolean {
     let firstConstructor = (value1 as any).constructor.name;
     let secondConstructor = (value2 as any).constructor.name;
 

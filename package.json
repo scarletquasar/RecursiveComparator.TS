@@ -1,11 +1,11 @@
 {
   "name": "recursive-comparator-js",
-  "version": "1.2.1",
+  "version": "2.0",
   "type": "module",
   "description": "Compare variables of any type with customizable parameters",
-  "main": "./src/recursiveComparator.js",
+  "main": "./out/recursiveComparator.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d out --extensions \".ts,.tsx\""
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,14 @@
   "bugs": {
     "url": "https://github.com/EternalQuasar0206/recursive-comparator/issues"
   },
-  "homepage": "https://github.com/EternalQuasar0206/recursive-comparator#readme"
+  "homepage": "https://github.com/EternalQuasar0206/recursive-comparator#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-typescript": "^7.16.8",
+    "@babel/preset-typescript": "^7.16.7"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.16.11"
+  }
 }
