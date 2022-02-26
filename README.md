@@ -18,7 +18,7 @@ and the code converted to vanilla JavaScript.
 Example:
 
 ```ts
-compare(1, 2, (a, b) => a === b); //False
-compare(1, 2, (a, b) => a !== b); //True
+compare<number>(1, 2, (a, b) => a === b); //False
+compare<number>(1, 2, (a, b) => a !== b); //True
 ```
 

@@ -1,5 +1,5 @@
 //RecursiveComparator v2.0.0
-export function compare(value1: unknown, value2: unknown, cmpFn: (a: unknown, b: unknown) => boolean = (a: unknown, b: unknown) => a === b): boolean {
+export function compare<T extends unknown>(value1: T, value2: T, cmpFn: (a: any, b: any) => boolean = (a: T, b: T) => a === b): boolean {
     let firstConstructor = (value1 as any).constructor.name;
     let secondConstructor = (value2 as any).constructor.name;
 
@@ -7,6 +7,7 @@ export function compare(value1: unknown, value2: unknown, cmpFn: (a: unknown, b:
 
     let len1: number | null = null;
     let len2: number | null = null;
+
 
     switch(firstConstructor) {
         case "Map":
@@ -18,10 +19,10 @@ export function compare(value1: unknown, value2: unknown, cmpFn: (a: unknown, b:
 
             if(len1 !== len2) return false;
 
-            const arrayMap1 = Array.from(map1.entries());
-            const arrayMap2 = Array.from(map1.entries());
+            const arrayMap1: any[] = Array.from(map1.entries());
+            const arrayMap2: any[] = Array.from(map1.entries());
 
-            return compare(arrayMap1, arrayMap2, cmpFn);
+            return compare<any[]>(arrayMap1, arrayMap2, cmpFn);
 
         case "Set":
             const set1: Set<any> = value1 as Set<any>;
